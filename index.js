@@ -20,7 +20,7 @@ navList.forEach((item) => {
   item.addEventListener('click', (e) => {
     navList.forEach((hhh) => {
       hhh.classList.remove('active');
-      const index = Number(e.target.getAttribute('data'));
+      const index = Number(e.target.getAttribute('id'));
       Array.from(sections, (section, ind) => ind === index ? section.classList.remove('hide') : section.classList.add('hide'));
     });
     item.classList.add('active');
