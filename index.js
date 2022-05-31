@@ -1,11 +1,13 @@
+import { DateTime } from './modules/luxton.js';
+import Library from './modules/Library.js';
+
 const lib = document.getElementById('library');
 const navList = document.querySelectorAll('.nav-link');
 const homePage = document.getElementById('home');
 const sections = document.querySelectorAll('section');
 const date = document.querySelector('.date');
 
-import { DateTime } from './modules/luxton.js';
-import Library from './modules/Library.js';
+
 
 const library = new Library(lib);
 let getDate = DateTime.now();
@@ -22,11 +24,7 @@ navList.forEach((item) => {
     navList.forEach((hhh) => {
       hhh.classList.remove('active');
       const index = Number(e.target.getAttribute('data'));
-      Array.from(sections, (section, ind) =>
-        ind === index
-          ? section.classList.remove('hide')
-          : section.classList.add('hide')
-      );
+      Array.from(sections, (section, ind) =>ind === index? section.classList.remove('hide'): section.classList.add('hide'));
     });
     item.classList.add('active');
   });
@@ -34,7 +32,7 @@ navList.forEach((item) => {
 
 document.querySelector('.add-book').addEventListener('submit', (e) => {
   e.preventDefault();
-  let object = {
+  const object = {
     title: '',
     author: '',
   };
@@ -47,9 +45,4 @@ document.querySelector('.add-book').addEventListener('submit', (e) => {
   library.addBook(object, lib);
   document.querySelector('.title').value = '';
   document.querySelector('.author').value = '';
-});
-homePage.addEventListener('click', () => {
-  bookSection.classList.remove('hide');
-  form.classList.add('hide');
-  contactSection.classList.add('hide');
 });
