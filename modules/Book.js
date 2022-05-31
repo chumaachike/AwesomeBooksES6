@@ -1,6 +1,6 @@
 export default class Book {
-  constructor(object, next_object = null) {
+  constructor(object, nextObject = null) {
     this.object = object;
-    this.next_object = next_object;
+    this.nextObject = nextObject;
   }
 }
