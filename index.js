@@ -1,11 +1,11 @@
-const lib = document.getElementById("library");
-const navList = document.querySelectorAll(".nav-link");
-const homePage = document.getElementById("home");
-const sections = document.querySelectorAll("section");
-const date = document.querySelector(".date");
+const lib = document.getElementById('library');
+const navList = document.querySelectorAll('.nav-link');
+const homePage = document.getElementById('home');
+const sections = document.querySelectorAll('section');
+const date = document.querySelector('.date');
 
-import { DateTime } from "./modules/luxton.js";
-import Library from "./modules/Library.js";
+import { DateTime } from './modules/luxton.js';
+import Library from './modules/Library.js';
 
 const library = new Library(lib);
 let getDate = DateTime.now();
@@ -18,38 +18,38 @@ const updateDate = () => {
 setInterval(updateDate, 1000);
 
 navList.forEach((item) => {
-  item.addEventListener("click", (e) => {
+  item.addEventListener('click', (e) => {
     navList.forEach((hhh) => {
-      hhh.classList.remove("active");
-      const index = Number(e.target.getAttribute("data"));
+      hhh.classList.remove('active');
+      const index = Number(e.target.getAttribute('data'));
       Array.from(sections, (section, ind) =>
         ind === index
-          ? section.classList.remove("hide")
-          : section.classList.add("hide")
+          ? section.classList.remove('hide')
+          : section.classList.add('hide')
       );
     });
-    item.classList.add("active");
+    item.classList.add('active');
   });
 });
 
-document.querySelector(".add-book").addEventListener("submit", (e) => {
+document.querySelector('.add-book').addEventListener('submit', (e) => {
   e.preventDefault();
   let object = {
-    title: "",
-    author: "",
+    title: '',
+    author: '',
   };
-  object.title = document.querySelector(".title").value;
-  object.author = document.querySelector(".author").value;
+  object.title = document.querySelector('.title').value;
+  object.author = document.querySelector('.author').value;
 
-  if (object.title === "" || object.author === "") {
+  if (object.title === '' || object.author === '') {
     return;
   }
   library.addBook(object, lib);
-  document.querySelector(".title").value = "";
-  document.querySelector(".author").value = "";
+  document.querySelector('.title').value = '';
+  document.querySelector('.author').value = '';
 });
-homePage.addEventListener("click", () => {
-  bookSection.classList.remove("hide");
-  form.classList.add("hide");
-  contactSection.classList.add("hide");
+homePage.addEventListener('click', () => {
+  bookSection.classList.remove('hide');
+  form.classList.add('hide');
+  contactSection.classList.add('hide');
 });
