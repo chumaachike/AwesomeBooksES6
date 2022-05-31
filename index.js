@@ -3,11 +3,8 @@ import Library from './modules/Library.js';
 
 const lib = document.getElementById('library');
 const navList = document.querySelectorAll('.nav-link');
-const homePage = document.getElementById('home');
 const sections = document.querySelectorAll('section');
 const date = document.querySelector('.date');
-
-
 
 const library = new Library(lib);
 let getDate = DateTime.now();
