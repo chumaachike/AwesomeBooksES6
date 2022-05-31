@@ -5,6 +5,7 @@ export default class Library {
     this.books = JSON.parse(localStorage.getItem('bookCollection')) || [];
     this.createBook(lib, this.books);
   }
+
   addBook = (bookDetails, lib) => {
     const book = new Book(bookDetails);
     let current;
@@ -17,7 +18,7 @@ export default class Library {
       }
       current.next_object = book;
     }
-    this.size++;
+    this.size += 1;
     this.books.push(book);
     this.createBook(lib, this.books);
     localStorage.setItem('bookCollection', JSON.stringify(this.books));
@@ -38,7 +39,7 @@ export default class Library {
       removeButton.classList.add('delete-button');
       removeButton.setAttribute('data', i);
       removeButton.addEventListener('click', this.deleteBook.bind(this, lib));
-      i++;
+      i += 1;
       bookTable.appendChild(bookContainer);
       bookContainer.appendChild(bookInfo);
       bookContainer.appendChild(removeButton);
@@ -47,6 +48,7 @@ export default class Library {
       removeButton.innerHTML = 'Remove';
     });
   };
+
   deleteBook = (lib, evt) => {
     this.books.splice(evt.currentTarget.getAttribute('data'), 1);
     this.createBook(lib, this.books);
